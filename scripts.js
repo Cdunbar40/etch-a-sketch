@@ -17,22 +17,13 @@ for (var i = 0; i < 16*16; i++){
                             margin:0px;
                             flex: 0 0 auto;`);
     pix.classList.add('pixel');
+    pix.addEventListener(
+        "mouseenter",
+        (event) => {
+          event.target.setAttribute('style', 'background-color:orange;');
+          console.log('fired'); });
     sheet.appendChild(pix);
 }
 
 
 body.appendChild(sheet);
-const test = document.querySelector('.pixel');
-test.addEventListener(
-    "mouseenter",
-    (event) => {
-      // highlight the mouseover target
-      test.setAttribute('style', 'background-color:orange;');
-      console.log('fired');
-      // reset the color after a short delay
-      setTimeout(() => {
-        event.target.style.color = "";
-      }, 500);
-    },
-    false,
-  );
