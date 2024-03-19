@@ -25,7 +25,20 @@ for (var i = 0; i < 16*16; i++){
     pix.addEventListener(
         "mouseover",
         (event) => {
-          event.target.style.backgroundColor='black';
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            var curr = getComputedStyle(event.target).getPropertyValue('background-color');
+            const regex = /rgba\(.*?,.*?,.*?,\s*([\d.]+)\s*\)/;
+            const match = curr.match(regex);
+            if (match){
+                var alpha = parseFloat(match[1]);
+                alpha += .1;
+            } else {
+                var alpha = 1;
+            }
+            console.log(alpha);
+            event.target.style.backgroundColor=`rgba(${r},${g},${b},${alpha})`;
         });
     sheet.appendChild(pix);
 }
@@ -58,7 +71,20 @@ function resetGrid() {
         pix.addEventListener(
             "mouseover",
             (event) => {
-            event.target.style.backgroundColor='black';
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            var curr = getComputedStyle(event.target).getPropertyValue('background-color');
+            const regex = /rgba\(.*?,.*?,.*?,\s*([\d.]+)\s*\)/;
+            const match = curr.match(regex);
+            if (match){
+                var alpha = parseFloat(match[1]);
+                alpha += .1;
+            } else {
+                var alpha = 1;
+            }
+            console.log(alpha);
+            event.target.style.backgroundColor=`rgba(${r},${g},${b},${alpha})`;
             });
         sheet.appendChild(pix);
     }
